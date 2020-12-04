@@ -1,0 +1,17 @@
+[[source]]
+name = "aliyun"
+url = "https://mirrors.aliyun.com/pypi/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+pyqt5 = "5.12.0"
+spyhook = "*"
+numpy = "*"
+matplotlib = "*"
+sympy = "*"
+scipy = "*"
+
+[requires]
+python_version = "3.8"
