@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1589</width>
-    <height>965</height>
+    <width>1443</width>
+    <height>928</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -36,7 +36,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+    <item row="0" column="1">
      <widget class="QWidget" name="widget" native="true">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -44,120 +44,8 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="1" column="0">
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>5</width>
-           <height>10</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="1" column="3">
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Expanding</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>5</width>
-           <height>10</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="1" column="1">
-        <widget class="QWidget" name="widget_11" native="true">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>7</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_3">
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <item row="0" column="0">
-           <widget class="QGroupBox" name="groupBox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>12</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="title">
-             <string>PSO可视化全区域</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QWidget" name="widget_10" native="true">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>1</verstretch>
-             </sizepolicy>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_8">
-             <item>
-              <widget class="QWidget" name="widget_9" native="true">
-               <layout class="QHBoxLayout" name="horizontalLayout_7">
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item>
-                 <widget class="QPushButton" name="pushButton_start_calculate">
-                  <property name="text">
-                   <string>开始计算</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_7">
-                  <property name="text">
-                   <string>播放速度（每秒刷新次数）：</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QDoubleSpinBox" name="doubleSpinBox_play_rate">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="value">
-                   <double>2.000000000000000</double>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="pushButton_start_play">
-                  <property name="text">
-                   <string>播放动画</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="1" column="2">
+      <layout class="QHBoxLayout" name="horizontalLayout_15">
+       <item>
         <widget class="QWidget" name="widget_8" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -305,7 +193,7 @@
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
               <horstretch>0</horstretch>
-              <verstretch>4</verstretch>
+              <verstretch>3</verstretch>
              </sizepolicy>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -317,10 +205,23 @@
               </widget>
              </item>
              <item>
-              <widget class="QDoubleSpinBox" name="doubleSpinBox_r1_min"/>
+              <widget class="QDoubleSpinBox" name="doubleSpinBox_r1_min">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>4</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
              </item>
              <item>
               <widget class="Line" name="line">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>3</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
@@ -328,6 +229,12 @@
              </item>
              <item>
               <widget class="QDoubleSpinBox" name="doubleSpinBox_r1_max">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>4</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="value">
                 <double>1.000000000000000</double>
                </property>
@@ -379,7 +286,7 @@
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
               <horstretch>0</horstretch>
-              <verstretch>4</verstretch>
+              <verstretch>3</verstretch>
              </sizepolicy>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -393,8 +300,8 @@
              <item>
               <widget class="QDoubleSpinBox" name="doubleSpinBox_r2_min">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>4</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
@@ -402,6 +309,12 @@
              </item>
              <item>
               <widget class="Line" name="line_2">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>3</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
@@ -410,8 +323,8 @@
              <item>
               <widget class="QDoubleSpinBox" name="doubleSpinBox_r2_max">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>4</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
@@ -468,8 +381,8 @@
              <item>
               <widget class="QDoubleSpinBox" name="doubleSpinBox_x1_min">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>4</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
@@ -477,6 +390,12 @@
              </item>
              <item>
               <widget class="Line" name="line_3">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>3</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
@@ -485,8 +404,8 @@
              <item>
               <widget class="QDoubleSpinBox" name="doubleSpinBox_x1_max">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>4</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
@@ -503,7 +422,7 @@
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
               <horstretch>0</horstretch>
-              <verstretch>4</verstretch>
+              <verstretch>3</verstretch>
              </sizepolicy>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_10">
@@ -517,8 +436,8 @@
              <item>
               <widget class="QDoubleSpinBox" name="doubleSpinBox_x2_min">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>4</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
@@ -526,6 +445,12 @@
              </item>
              <item>
               <widget class="Line" name="line_4">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>3</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
@@ -534,8 +459,8 @@
              <item>
               <widget class="QDoubleSpinBox" name="doubleSpinBox_x2_max">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>4</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
@@ -552,7 +477,7 @@
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
               <horstretch>0</horstretch>
-              <verstretch>4</verstretch>
+              <verstretch>3</verstretch>
              </sizepolicy>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_11">
@@ -566,8 +491,8 @@
              <item>
               <widget class="QDoubleSpinBox" name="doubleSpinBox_x3_min">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>4</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
@@ -575,6 +500,12 @@
              </item>
              <item>
               <widget class="Line" name="line_5">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>3</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
@@ -583,14 +514,146 @@
              <item>
               <widget class="QDoubleSpinBox" name="doubleSpinBox_x3_max">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>4</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
                <property name="value">
                 <double>15.000000000000000</double>
                </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_17" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_12">
+             <item>
+              <spacer name="horizontalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_start_calculate">
+               <property name="text">
+                <string>开始计算</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_4">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_11" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>7</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QGroupBox" name="groupBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>12</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="title">
+             <string>PSO可视化全区域</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QWidget" name="widget_10" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>1</verstretch>
+             </sizepolicy>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_8">
+             <item>
+              <widget class="QWidget" name="widget_9" native="true">
+               <layout class="QHBoxLayout" name="horizontalLayout_7">
+                <property name="bottomMargin">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_13">
+                  <property name="text">
+                   <string>历史结果：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox_result_history">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>4</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_7">
+                  <property name="text">
+                   <string>播放速度（每秒刷新次数）：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QDoubleSpinBox" name="doubleSpinBox_play_rate">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>2</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="value">
+                   <double>2.000000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_start_play">
+                  <property name="text">
+                   <string>播放动画</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
             </layout>
@@ -609,7 +672,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1589</width>
+     <width>1443</width>
      <height>21</height>
     </rect>
    </property>

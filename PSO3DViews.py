@@ -1,12 +1,14 @@
 from PyQt5 import QtWidgets
+from PyQt5.QtGui import QIcon, QPixmap
 from matplotlib.lines import Line2D
 
 from Ui_PSO3DViews import Ui_PSO3DViews
 from PyQt5.QtWidgets import *
-from PyQt5.QtCore import QTimer, pyqtSignal, Qt
+from PyQt5.QtCore import QTimer, pyqtSignal, Qt, QSize
 import sys
 import time
 import numpy as np
+import sip
 
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
@@ -43,6 +45,13 @@ class PSO3DViews(QMainWindow, Ui_PSO3DViews):
     z_min = 0
     z_max = 15
     playRate = 1  # 播放速率，即每秒刷新次数
+    first_draw = True  # 第一次画图
+    first_play = True  # 第一次播放动画
+    caculate_result_history_cnt = 0  # 计算历史的统计
+    caculate_result = []  # 存放历史记录
+    caculate_result_history_position = []  # 存放历史记录
+    caculate_result_history_best_index = []  # 存放历史记录
+
     fitnessFunction = '(2 * x1 ** 2 - 3 * x2 ** 2 - 4 * x1 + 5 * x2 + x3) * 100'  # 优化函数，用户可以自定义
     result = []
     position_history = [[]]  # 记录粒子历史移动信息，用于绘图
@@ -53,9 +62,22 @@ class PSO3DViews(QMainWindow, Ui_PSO3DViews):
         self.setupUi(self)
         self.statusbar.hide()
         self.pushButton_start_play.setEnabled(False)
+        self.center()  # 主窗口居中
         self.pushButton_start_calculate.clicked.connect(self.runPSO)  # 开始计算PSO
         self.signalFinishCalculate.connect(self.handleFininshCalculate)  # 完成计算
         self.pushButton_start_play.clicked.connect(self.pathUpdate)  # 点击按钮更新图像
+        self.comboBox_result_history.currentIndexChanged.connect(self.reloadHistory)  # 重新载入画板
+        self.path3dFigureLayout = QGridLayout(self.groupBox)  # 画板布局
+        self.drawTimer = QTimer()  # 计时器
+        # 设置groupbox背景图
+        self.bgiLabel = QLabel()
+        self.bgiLabel.setScaledContents(True)
+        self.path3dFigureLayout.addWidget(self.bgiLabel)
+        pix = QPixmap('img/bgi.jpg')
+        picSize = QSize(self.bgiLabel.width(), self.bgiLabel.height())
+        print(picSize)
+        pix = pix.scaled(picSize, Qt.IgnoreAspectRatio, Qt.SmoothTransformation)
+        self.bgiLabel.setPixmap(pix)
 
     def Init_Widgets(self):
         self.PrepareData()
@@ -71,7 +93,6 @@ class PSO3DViews(QMainWindow, Ui_PSO3DViews):
 
     def Prepare3DPathCanvas(self):
         self.path3dFigure = Figure_Canvas()  # 创建画布
-        self.path3dFigureLayout = QGridLayout(self.groupBox)
         self.path3dFigureLayout.addWidget(self.path3dFigure)
         self.path3dFigure.ax.remove()
         self.ax3d = self.path3dFigure.fig.gca(projection='3d')
@@ -115,6 +136,16 @@ class PSO3DViews(QMainWindow, Ui_PSO3DViews):
         solveThread = Thread(target=newPSO.solving, args=(self.times,))
         solveThread.start()  # 启动计算线程
         solveThread.join()
+        # 保存历史记录
+        self.caculate_result_history_cnt += 1
+        self.caculate_result.append(newPSO.returnbest())
+        self.caculate_result_history_position.append(newPSO.rerturn_position_history())
+        self.caculate_result_history_best_index.append(newPSO.return_best_position_index_history())
+        # 在combox记录历史信息
+        self.comboBox_result_history.addItem("计算结果" + str(self.caculate_result_history_cnt) + str(
+            time.strftime("(生成于：%Y-%m-%d %H:%M:%S)", time.localtime())))
+        self.comboBox_result_history.setCurrentIndex(self.caculate_result_history_cnt - 1)
+
         self.position_history = newPSO.rerturn_position_history()
         self.best_position_index_history = newPSO.return_best_position_index_history()
         self.result = newPSO.returnbest()
@@ -122,12 +153,10 @@ class PSO3DViews(QMainWindow, Ui_PSO3DViews):
 
     def handleFininshCalculate(self):
         self.pushButton_start_play.setEnabled(True)
-        self.Init_Widgets()
 
     def pathUpdate(self):
         self.playRate = self.doubleSpinBox_play_rate.value()
         self.playRate = (1 / self.playRate) * 1000
-        self.drawTimer = QTimer()
         self.drawTimer.start(int(self.playRate))
         self.ts = time.time()  # 开始时间
         print("ts:{}".format(self.ts))
@@ -156,6 +185,7 @@ class PSO3DViews(QMainWindow, Ui_PSO3DViews):
         self.path3dFigure.setSizePolicy(sizePolicy)
         # 设置2d图的尺寸策略
         self.path3dFigureLayout.addWidget(self.result2dFigure)
+        self.first_play = False
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(1)
@@ -207,9 +237,39 @@ class PSO3DViews(QMainWindow, Ui_PSO3DViews):
             self.result2dFigure.ax.set_title("PSO优化结果动态展示")
             self.result2dFigure.draw()
 
+    def center(self):  # 定义一个函数使得窗口居中显示
+        # 获取屏幕坐标系
+        screen = QDesktopWidget().screenGeometry()
+        # 获取窗口坐标系
+        size = self.geometry()
+        newLeft = (screen.width() - size.width()) / 2
+        newTop = (screen.height() - size.height()) / 2
+        self.move(int(newLeft), int(newTop))
+
+    def reloadHistory(self):  # 用户选择历史数据，更新画布
+        index = self.comboBox_result_history.currentIndex()
+        print(index)
+        self.position_history = self.caculate_result_history_position[index]
+        self.best_position_index_history = self.caculate_result_history_best_index[index]
+        self.result = self.caculate_result[index]
+        self.groupBox.show()
+        if (self.first_draw == False):
+            self.path3dFigureLayout.removeWidget(self.path3dFigure)
+            sip.delete(self.path3dFigure)
+        else:
+            self.path3dFigureLayout.removeWidget(self.bgiLabel)
+        if (self.first_play == False):
+            self.path3dFigureLayout.removeWidget(self.result2dFigure)
+            sip.delete(self.result2dFigure)
+            self.drawTimer.stop()
+            self.first_play = True
+        self.Init_Widgets()
+        self.first_draw = False
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ui = PSO3DViews()
+    ui.setWindowIcon(QIcon("img/head.jpg"))
     ui.show()
     sys.exit(app.exec_())
