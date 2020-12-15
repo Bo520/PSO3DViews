@@ -7,4 +7,5 @@
 /PSOWindows.py
 /test5.gif
 /testDraw.py
-/idea/
+/__pycache__/
+/.idea/

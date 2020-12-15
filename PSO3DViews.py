@@ -258,6 +258,7 @@ class PSO3DViews(QMainWindow, Ui_PSO3DViews):
             sip.delete(self.path3dFigure)
         else:
             self.path3dFigureLayout.removeWidget(self.bgiLabel)
+            sip.delete(self.bgiLabel)
         if (self.first_play == False):
             self.path3dFigureLayout.removeWidget(self.result2dFigure)
             sip.delete(self.result2dFigure)
