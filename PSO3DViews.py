@@ -68,6 +68,7 @@ class PSO3DViews(QMainWindow, Ui_PSO3DViews):
         self.pushButton_start_play.clicked.connect(self.pathUpdate)  # 点击按钮更新图像
         self.comboBox_result_history.currentIndexChanged.connect(self.reloadHistory)  # 重新载入画板
         self.path3dFigureLayout = QGridLayout(self.groupBox)  # 画板布局
+        self.path3dFigureLayout.setContentsMargins(0, 0, 0, 0)
         self.drawTimer = QTimer()  # 计时器
         # 设置groupbox背景图
         self.bgiLabel = QLabel()
@@ -127,8 +128,8 @@ class PSO3DViews(QMainWindow, Ui_PSO3DViews):
         self.y_max = self.doubleSpinBox_x2_max.value()
         self.z_min = self.doubleSpinBox_x3_min.value()
         self.z_max = self.doubleSpinBox_x3_max.value()
-        if (self.lineEdit_fitness_function.text() != ''):
-            self.fitnessFunction = self.lineEdit_fitness_function.text()
+        if (self.textEdit.toPlainText() != ''):
+            self.fitnessFunction = self.textEdit.toPlainText()
         print(self.fitnessFunction)
         newPSO = PSO(self.pop_size, self.dim, self.omega, self.c1, self.c2, self.x_max, self.x_min, self.y_max,
                      self.y_min, self.z_max, self.z_min, self.fitnessFunction)
