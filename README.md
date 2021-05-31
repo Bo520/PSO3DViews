@@ -24,3 +24,11 @@ Make sure you have finished the former steps.
 python PSO3DViews.py
 ```
 # Enjoy
+
+1. Main window
+
+![image-20210531163603828](https://gitee.com/vancomycin_bo/markdown_img/raw/master/img/20210531163604.png)
+
+2. Running
+
+![image-20210531163716123](https://gitee.com/vancomycin_bo/markdown_img/raw/master/img/20210531163717.png)
