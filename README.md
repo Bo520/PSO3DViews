@@ -1,7 +1,7 @@
 # PSO3DViews
 A PyQt5-based program to visualize 3-parameters PSO  
 Author: Bo Cai  
-Mail: [caibo@ginpie.com](caibo@ginpie.com)
+Mail: [caibo0520@qq.com](caibo0520@qq.com)
 # Install Dependence
 All dependence are included in `Pipfile` so you can use one of `Anaconda`, `pipenv` or `virtualenv` to build the environment to run this program.  
 For example, I will show you how to use `pipenv` to build the environment.  
